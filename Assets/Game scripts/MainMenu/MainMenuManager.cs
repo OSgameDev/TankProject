@@ -3,21 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Michsky.LSS;
 public class MainMenuManager : MonoBehaviour
 {
-    //testing
-    public Camera focusCamera;
-    public Camera UiCamera;
-
-    public GameObject focusCameraVolume;
-    public GameObject UiCameraVolume;
-
-    public void settingsButton()
-    {
-
-    }
-
-    //testing end
+    public LoadingScreenManager LoadingScreenManager;
 
     //loading
     public Text loadingText;
@@ -282,13 +271,13 @@ public class MainMenuManager : MonoBehaviour
     }
     public void PlayButton()
     {
+        Time.timeScale = 1.0f;
+        LoadingScreenManager.LoadScene("MainGameScene");
         //Playering Audio/ re setting time scale
         aud.Play();
-        Time.timeScale = 1;
 
         //re setting In Game variables
         AdsManager.isWatchedAdBefore = false;
-        LevelLoader.anim.SetBool("start", true);
         SpawnEnemyScript.maxTime = SpawnEnemyScript.enemyStartingMaxTime;
         SoliderEnemyScript.MovingSpeed = SoliderEnemyScript.enemyStartingSpeed;
         SpawnEnemyScript.isSpawningAirPlaneTime = false;
@@ -310,9 +299,6 @@ public class MainMenuManager : MonoBehaviour
         {
             SpawnEnemyScript.isFightingBoss = false;
         }
-
-        //scene fade animtion setting off
-        StartCoroutine(GameSceneLoad());
     }
 
     

@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Michsky.LSS;
 public class firiingModeControl : MonoBehaviour
 {
+    public LoadingScreenManager LoadingScreenManager;
+
     public Text loadingText;
 
+    public static bool isPaused;
     public static bool isUsingSprayMode = true;
     private AudioSource aud;
+
     //pause menu
     public GameObject pauseMenuHolder;
     public Material bossMaterial;
@@ -33,6 +38,8 @@ public class firiingModeControl : MonoBehaviour
     //PAUSE button
     public void pauseButton()
     {
+        isPaused = true;
+        Time.timeScale = 1.0f;
         backgroundMusicScript.aud.volume = 0.15f;
         Time.timeScale = 0;
         pauseMenuHolder.SetActive(true);
@@ -40,6 +47,7 @@ public class firiingModeControl : MonoBehaviour
 
     public void continueButotn()
     {
+        isPaused = false;
         backgroundMusicScript.aud.volume = 0.4f;
         Time.timeScale = 1;
         pauseMenuHolder.SetActive(false);
@@ -59,17 +67,15 @@ public class firiingModeControl : MonoBehaviour
 
     public void returnToMainMenu()
     {
-        //saving player money and re setting in game money;
+        isPaused = false;
+
         playerCoinManagment.playerMoney += playerCoinManagment.inGamePlayerMoney;
         saveAndloadsystem.SavePlayerData();
         playerCoinManagment.inGamePlayerMoney = 0;
 
-        //Re setting the boss material shader
         bossMaterial.SetFloat("dissolveAmount", 1);
 
-        //Loading Main Menu Scene
-        LevelLoader.anim.SetBool("start", true);
-        StartCoroutine(mainMenuSceneLoad());
+        LoadingScreenManager.LoadScene("MainMenu");
     }
     
 }

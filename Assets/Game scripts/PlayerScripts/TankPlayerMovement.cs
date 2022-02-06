@@ -320,6 +320,7 @@ public class TankPlayerMovement : MonoBehaviour
     public void rocketShooting()
     {
         if (tankRocketCapacity <= 0) return;
+        if (firiingModeControl.isPaused) return;
         if (Time.time >= nextTimeToFire && isTankAlive)
         {
 
@@ -414,6 +415,7 @@ public class TankPlayerMovement : MonoBehaviour
         touchPos += dampen;//dampening the touch position to fit the screen
 
         if (touchPos.x <= 1.1f) return;//returning when the pisition of the toucb is to the left side 
+        if (firiingModeControl.isPaused) return;
         if (Time.time > sprayNextTimeToFire && firiingModeControl.isUsingSprayMode)//fire rate 
         {
             //muzzle flash
