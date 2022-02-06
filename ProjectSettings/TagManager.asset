@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - soliderBullet
+  - Solider
+  - Tank
+  - solider
+  - Plane
+  - Bomb
+  - camHolder
+  - slider
+  - text
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Bullet
+  - Water
+  - UI
+  - Ground
+  - Enemy
+  - PlayerTank
+  - coin
+  - leftBorder
+  - firstBoss
+  - Rocket
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - UiCamera
+  - FocusCameraVolume
+  - menuPostProcessing
+  - postProcessing
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Mountain
+    uniqueID: 2665453999
+    locked: 0
